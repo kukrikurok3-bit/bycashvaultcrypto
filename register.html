@@ -6,40 +6,52 @@
     <title>Create Account | ByCash Vault</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body style="background: radial-gradient(circle at center, #181a20 0%, #0b0e11 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+<body style="background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-main) 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <div style="position: absolute; top: 24px; right: 40px; display: flex; gap: 24px; align-items: center;">
+        <select id="lang-select" style="background: transparent; border: none; color: var(--text-muted); font-size: 12px; cursor: pointer; outline: none;">
+            <option value="en">EN</option>
+            <option value="ru">RU</option>
+            <option value="de">DE</option>
+            <option value="es">ES</option>
+            <option value="pt">PT</option>
+        </select>
+        <div id="theme-toggle" style="width: 40px; height: 20px; background: var(--bg-card); border-radius: 10px; position: relative; cursor: pointer; border: 1px solid var(--border);">
+            <div id="theme-circle" style="width: 14px; height: 14px; background: var(--accent); border-radius: 50%; position: absolute; right: 2px; top: 2px; transition: all 0.2s;"></div>
+        </div>
+    </div>
     <div class="card animate-fade-in" style="width: 100%; max-width: 440px; padding: 40px;">
         <div style="text-align: center; margin-bottom: 32px;">
             <a href="/" class="nav-logo" style="justify-content: center; margin-bottom: 24px;">
                 <div class="logo-icon">B</div>
                 ByCash Vault
             </a>
-            <h2 style="font-size: 28px; font-weight: 700; letter-spacing: -1px;">Create account</h2>
-            <p class="text-muted" style="margin-top: 8px;">Start your crypto journey with ByCash Vault</p>
+            <h2 style="font-size: 28px; font-weight: 700; letter-spacing: -1px;" data-i18n="create_account">Create account</h2>
+            <p class="text-muted" style="margin-top: 8px;" data-i18n="register_subtitle">Start your crypto journey with ByCash Vault</p>
         </div>
 
         <form id="register-form" class="flex flex-col gap-6">
             <div class="flex flex-col gap-2">
-                <label class="text-muted" style="font-size: 13px; font-weight: 600;">Email Address</label>
+                <label class="text-muted" style="font-size: 13px; font-weight: 600;" data-i18n="email_address">Email Address</label>
                 <input type="email" id="email" required class="input-field" placeholder="name@example.com">
             </div>
             <div class="flex flex-col gap-2">
-                <label class="text-muted" style="font-size: 13px; font-weight: 600;">Password</label>
+                <label class="text-muted" style="font-size: 13px; font-weight: 600;" data-i18n="password">Password</label>
                 <input type="password" id="password" required class="input-field" placeholder="••••••••">
             </div>
             <div class="flex flex-col gap-2">
-                <label class="text-muted" style="font-size: 13px; font-weight: 600;">Referral ID (Optional)</label>
+                <label class="text-muted" style="font-size: 13px; font-weight: 600;" data-i18n="referral_id">Referral ID (Optional)</label>
                 <input type="text" id="ref" class="input-field" placeholder="REF123">
             </div>
             <div class="flex items-start gap-3" style="font-size: 12px; color: var(--text-muted);">
                 <input type="checkbox" required style="margin-top: 3px;">
-                <span>I agree to the <a href="#" class="text-accent">Terms of Service</a> and <a href="#" class="text-accent">Privacy Policy</a>.</span>
+                <span data-i18n="agree_terms">I agree to the <a href="#" class="text-accent">Terms of Service</a> and <a href="#" class="text-accent">Privacy Policy</a>.</span>
             </div>
-            <button type="submit" class="btn btn-primary" style="padding: 14px; font-size: 16px;">Create Account</button>
+            <button type="submit" class="btn btn-primary" style="padding: 14px; font-size: 16px;" data-i18n="create_account">Create Account</button>
         </form>
 
         <div style="margin-top: 32px; text-align: center; font-size: 14px;">
-            <span class="text-muted">Already have an account?</span>
-            <a href="/login.html" class="text-accent" style="text-decoration: none; font-weight: 600; margin-left: 4px;">Sign In</a>
+            <span class="text-muted" data-i18n="already_have_account">Already have an account?</span>
+            <a href="/login.html" class="text-accent" style="text-decoration: none; font-weight: 600; margin-left: 4px;" data-i18n="sign_in">Sign In</a>
         </div>
     </div>
 

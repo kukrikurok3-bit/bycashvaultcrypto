@@ -54,9 +54,7 @@
             </div>
 
             <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px;">
-                <!-- Left Column -->
                 <div class="flex flex-col gap-8">
-                    <!-- Balance Card -->
                     <div class="card" style="background: linear-gradient(135deg, var(--bg-secondary) 0%, #1e1e2d 100%); border-color: rgba(123, 63, 228, 0.2);">
                         <div class="flex justify-between items-start">
                             <div>
@@ -70,13 +68,12 @@
                         </div>
                     </div>
 
-                    <!-- Market Overview -->
                     <div class="card">
                         <h4 style="margin-bottom: 24px; font-size: 18px; font-weight: 700;">Market Overview</h4>
                         <div class="flex flex-col gap-4">
                             <div class="flex justify-between items-center p-4" style="background: var(--bg-main); border-radius: 12px; border: 1px solid var(--border);">
                                 <div class="flex items-center gap-4">
-                                    <div style="width: 32px; height: 32px; background: #f7931a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800;">BTC</div>
+                                    <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" width="32" alt="BTC" referrerPolicy="no-referrer">
                                     <span style="font-weight: 700;">Bitcoin</span>
                                 </div>
                                 <div style="text-align: right;">
@@ -86,7 +83,7 @@
                             </div>
                             <div class="flex justify-between items-center p-4" style="background: var(--bg-main); border-radius: 12px; border: 1px solid var(--border);">
                                 <div class="flex items-center gap-4">
-                                    <div style="width: 32px; height: 32px; background: #627eea; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800;">ETH</div>
+                                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" width="32" alt="ETH" referrerPolicy="no-referrer">
                                     <span style="font-weight: 700;">Ethereum</span>
                                 </div>
                                 <div style="text-align: right;">
@@ -98,9 +95,7 @@
                     </div>
                 </div>
 
-                <!-- Right Column -->
                 <div class="flex flex-col gap-8">
-                    <!-- KYC Status -->
                     <div class="card">
                         <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 700;">Account Security</h4>
                         <div class="flex items-center justify-between p-4" style="background: rgba(246, 70, 93, 0.05); border-radius: 12px; border: 1px solid rgba(246, 70, 93, 0.1);">
@@ -113,7 +108,6 @@
                         <a href="/settings.html" class="btn btn-outline" style="width: 100%; margin-top: 16px; font-size: 13px;">Verify Now</a>
                     </div>
 
-                    <!-- Referral Card -->
                     <div class="card" style="background: var(--bg-card);">
                         <h4 style="margin-bottom: 8px; font-size: 16px; font-weight: 700;">Refer & Earn</h4>
                         <p class="text-muted" style="font-size: 13px; margin-bottom: 20px;">Invite your friends and get 30% commission on their trades.</p>
@@ -140,11 +134,13 @@
 
             if (user.kyc_status === 'verified') {
                 const kycBox = document.querySelector('[style*="rgba(246, 70, 93, 0.05)"]');
-                kycBox.style.background = 'rgba(14, 203, 129, 0.05)';
-                kycBox.style.borderColor = 'rgba(14, 203, 129, 0.1)';
-                document.getElementById('kyc-status').className = 'text-success';
-                document.getElementById('kyc-status').textContent = 'Verified';
-                kycBox.querySelector('svg').className = 'text-success';
+                if (kycBox) {
+                    kycBox.style.background = 'rgba(14, 203, 129, 0.05)';
+                    kycBox.style.borderColor = 'rgba(14, 203, 129, 0.1)';
+                    document.getElementById('kyc-status').className = 'text-success';
+                    document.getElementById('kyc-status').textContent = 'Verified';
+                    kycBox.querySelector('svg').className = 'text-success';
+                }
             }
         }
 

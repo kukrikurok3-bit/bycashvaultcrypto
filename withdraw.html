@@ -149,8 +149,17 @@
             receiveDisplay.textContent = `${receive.toFixed(8)} ${coin}`;
         }
 
-        coinSelect.onchange = updateForm;
+        coinSelect.onchange = () => {
+            updateForm();
+            fillSavedAddress();
+        };
         amountInput.oninput = updateReceive;
+
+        document.getElementById('max-btn').onclick = () => {
+            const available = parseFloat(document.getElementById('available-balance').textContent);
+            amountInput.value = available;
+            updateReceive();
+        };
 
         document.getElementById('withdraw-form').onsubmit = async (e) => {
             e.preventDefault();
@@ -167,7 +176,7 @@
 
             if (res.ok) {
                 alert('Withdrawal request submitted!');
-                window.location.href = '/wallet.html';
+                window.location.href = '/dashboard.html';
             } else {
                 const err = await res.json();
                 alert(err.error);
@@ -180,6 +189,22 @@
             const user = await res.json();
             document.getElementById('nav-balance').textContent = `${user.balance.toFixed(2)} USDT`;
             document.getElementById('available-balance').textContent = user.balance.toFixed(2);
+
+            // Load saved addresses
+            const addrRes = await fetch('/api/user/addresses');
+            const addresses = await addrRes.json();
+            window.userAddresses = addresses;
+            fillSavedAddress();
+        }
+
+        function fillSavedAddress() {
+            const coin = coinSelect.value;
+            const saved = window.userAddresses?.find(a => a.coin === coin);
+            if (saved) {
+                document.getElementById('address').value = saved.address;
+            } else {
+                document.getElementById('address').value = '';
+            }
         }
 
         document.getElementById('logout-btn').onclick = async () => {
