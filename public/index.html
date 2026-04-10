@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByCash Vault | Buy, sell and store over 300 digital assets</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="flex items-center gap-8">
+            <a href="/" class="nav-logo">
+                <div class="logo-icon">B</div>
+                ByCash Vault
+            </a>
+            <div class="nav-links">
+                <div class="nav-link" data-i18n="trade">Trade <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
+                <div class="nav-link" data-i18n="buy_crypto">Buy Crypto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
+                <div class="nav-link" data-i18n="market_tools">Market Tools <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
+                <div class="nav-link" data-i18n="finance">Finance <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
+                <a href="#" class="nav-link" data-i18n="news">News</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-6">
+            <div id="auth-guest" class="flex items-center gap-4">
+                <a href="/login.html" class="nav-link" data-i18n="sign_in">Sign In</a>
+                <a href="/register.html" class="btn btn-primary" data-i18n="create_account">Create Account</a>
+            </div>
+            <div id="auth-user" class="hidden flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-muted" style="font-size: 12px;">Balance:</span>
+                    <span id="nav-balance" style="font-weight: 700; color: var(--success);">0.00 USDT</span>
+                </div>
+                <a href="/settings.html" class="nav-link" data-i18n="settings">Settings</a>
+                <button id="logout-btn" class="btn btn-ghost" data-i18n="logout">Logout</button>
+            </div>
+            <div class="flex items-center gap-4">
+                <select id="lang-select" style="background: transparent; border: none; color: var(--text-muted); font-size: 12px; cursor: pointer; outline: none;">
+                    <option value="en">EN</option>
+                    <option value="ru">RU</option>
+                    <option value="de">DE</option>
+                    <option value="es">ES</option>
+                    <option value="pt">PT</option>
+                </select>
+                <div id="theme-toggle" style="width: 40px; height: 20px; background: var(--bg-card); border-radius: 10px; position: relative; cursor: pointer; border: 1px solid var(--border);">
+                    <div id="theme-circle" style="width: 14px; height: 14px; background: var(--accent); border-radius: 50%; position: absolute; right: 2px; top: 2px; transition: all 0.2s;"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container flex items-center justify-between">
+                <div class="animate-fade-in" style="max-width: 600px;">
+                    <h1 data-i18n="hero_title">Buy, sell and store over <br> 300 digital assets at <br> <span class="text-accent">ByCash Vault</span></h1>
+                    <p data-i18n="hero_subtitle">Trade Bitcoin, Ethereum, USDT and the top altcoins on the crypto exchange.</p>
+                    <div class="flex items-center gap-4" style="margin-bottom: 40px;">
+                        <span class="text-accent" style="font-size: 14px; display: flex; align-items: center; gap: 8px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                            fast tr
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <a href="/register.html" class="btn btn-primary" style="padding: 16px 32px; font-size: 16px;" data-i18n="create_account">Create Account</a>
+                        <a href="/trading.html" class="btn btn-outline" style="padding: 16px 32px; font-size: 16px; background: rgba(255,255,255,0.05);" data-i18n="start_trading">Start Trading</a>
+                    </div>
+                </div>
+
+                <div class="card animate-fade-in" style="width: 440px; background: rgba(24, 26, 32, 0.6); backdrop-filter: blur(20px); border-color: rgba(255,255,255,0.05);">
+                    <div class="flex flex-col gap-6">
+                        <!-- Bitcoin -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div style="width: 40px; height: 40px; background: #f7931a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white;">B</div>
+                                <div>
+                                    <div style="font-weight: 700;">Bitcoin</div>
+                                    <div class="text-muted" style="font-size: 12px;">BTC</div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 700;">$71744.97</div>
+                                <div class="text-success" style="font-size: 12px;">+0.55%</div>
+                            </div>
+                        </div>
+                        <!-- Ethereum -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div style="width: 40px; height: 40px; background: #627eea; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white;">E</div>
+                                <div>
+                                    <div style="font-weight: 700;">Ethereum</div>
+                                    <div class="text-muted" style="font-size: 12px;">ETH</div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 700;">$2191.92</div>
+                                <div class="text-success" style="font-size: 12px;">+0.06%</div>
+                            </div>
+                        </div>
+                        <!-- BNB -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div style="width: 40px; height: 40px; background: #f3ba2f; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white;">B</div>
+                                <div>
+                                    <div style="font-weight: 700;">BNB</div>
+                                    <div class="text-muted" style="font-size: 12px;">BNB</div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 700;">$600.71</div>
+                                <div class="text-danger" style="font-size: 12px;">-0.09%</div>
+                            </div>
+                        </div>
+                        <!-- Solana -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div style="width: 40px; height: 40px; background: #14f195; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white;">S</div>
+                                <div>
+                                    <div style="font-weight: 700;">Solana</div>
+                                    <div class="text-muted" style="font-size: 12px;">SOL</div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 700;">$83.25</div>
+                                <div class="text-success" style="font-size: 12px;">+0.96%</div>
+                            </div>
+                        </div>
+                        <!-- XRP -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div style="width: 40px; height: 40px; background: #23292f; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white;">X</div>
+                                <div>
+                                    <div style="font-weight: 700;">XRP</div>
+                                    <div class="text-muted" style="font-size: 12px;">XRP</div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 700;">$1.34</div>
+                                <div class="text-success" style="font-size: 12px;">+0.19%</div>
+                            </div>
+                        </div>
+                        <!-- Dogecoin -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div style="width: 40px; height: 40px; background: #c2a633; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white;">D</div>
+                                <div>
+                                    <div style="font-weight: 700;">Dogecoin</div>
+                                    <div class="text-muted" style="font-size: 12px;">DOGE</div>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 700;">$0.09</div>
+                                <div class="text-success" style="font-size: 12px;">+0.45%</div>
+                            </div>
+                        </div>
+
+                        <a href="/trading.html" style="text-align: right; font-size: 13px; color: var(--text-muted); text-decoration: none; margin-top: 8px;">View All 400+ Coins ></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/translations.js"></script>
+    <script>
+        async function checkAuth() {
+            const res = await fetch('/api/user');
+            if (res.ok) {
+                const user = await res.json();
+                document.getElementById('auth-guest').classList.add('hidden');
+                document.getElementById('auth-user').classList.remove('hidden');
+                document.getElementById('nav-balance').textContent = `${user.balance.toFixed(2)} USDT`;
+            }
+        }
+
+        document.getElementById('logout-btn').onclick = async () => {
+            await fetch('/api/logout', { method: 'POST' });
+            window.location.reload();
+        };
+
+        checkAuth();
+    </script>
+</body>
+</html>
