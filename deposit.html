@@ -14,6 +14,93 @@
                 ByCash Vault
             </a>
             <div class="nav-links">
+<<<<<<< HEAD
+                <a href="/dashboard.html" class="nav-link" data-i18n="dashboard">Dashboard</a>
+                <a href="/trading.html" class="nav-link" data-i18n="trade">Trade</a>
+                <a href="/settings.html" class="nav-link" data-i18n="settings">Settings</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-muted" style="font-size: 12px;" data-i18n="balance">Balance:</span>
+                    <span id="nav-balance" style="font-weight: 700; color: var(--success);">0.00 USDT</span>
+                </div>
+                <select id="lang-select" style="background: transparent; border: none; color: var(--text-muted); font-size: 12px; cursor: pointer; outline: none;">
+                    <option value="en">EN</option>
+                    <option value="ru">RU</option>
+                    <option value="de">DE</option>
+                    <option value="es">ES</option>
+                    <option value="pt">PT</option>
+                </select>
+                <div id="theme-toggle" style="width: 40px; height: 20px; background: var(--bg-card); border-radius: 10px; position: relative; cursor: pointer; border: 1px solid var(--border);">
+                    <div id="theme-circle" style="width: 14px; height: 14px; background: var(--accent); border-radius: 50%; position: absolute; right: 2px; top: 2px; transition: all 0.2s;"></div>
+                </div>
+                <button id="logout-btn" class="btn btn-ghost" data-i18n="logout">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 40px 0;">
+        <div class="animate-fade-in" style="max-width: 800px; margin: 0 auto;">
+            <div style="margin-bottom: 40px;">
+                <h2 style="font-size: 32px; font-weight: 800; letter-spacing: -1px;">Deposit Crypto</h2>
+                <p class="text-muted">Transfer assets to your ByCash Vault account.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 32px;">
+                <!-- Left: Form -->
+                <div class="card flex flex-col gap-6">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-muted" style="font-size: 13px; font-weight: 600;">Select Coin</label>
+                        <select id="coin-select" class="input-field">
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <option value="USDT">Tether (USDT)</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <label class="text-muted" style="font-size: 13px; font-weight: 600;">Network</label>
+                        <select id="network-select" class="input-field">
+                            <!-- Networks injected here -->
+                        </select>
+                    </div>
+
+                    <div id="deposit-address-container" style="padding: 24px; background: var(--bg-main); border-radius: 12px; border: 1px solid var(--border); text-align: center;">
+                        <div id="qrcode" style="width: 160px; height: 160px; background: white; margin: 0 auto 20px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=LOADING" id="qr-img" alt="QR Code" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-muted" style="font-size: 12px;">Deposit Address</span>
+                            <div class="flex items-center justify-between p-3" style="background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border);">
+                                <span id="deposit-address" style="font-family: monospace; font-size: 13px; word-break: break-all; color: var(--accent);">LOADING...</span>
+                                <button class="btn btn-ghost" style="padding: 4px;" onclick="copyAddress()">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <label class="text-muted" style="font-size: 13px; font-weight: 600;">Amount Sent</label>
+                        <input type="number" id="amount" class="input-field" placeholder="Enter amount sent">
+                        <p style="font-size: 11px; color: var(--text-muted);">Please enter the exact amount you sent to speed up verification.</p>
+                    </div>
+
+                    <button id="confirm-deposit" class="btn btn-primary" style="padding: 16px; font-size: 16px;">I have sent the payment</button>
+                </div>
+
+                <!-- Right: Info -->
+                <div class="flex flex-col gap-6">
+                    <div class="card">
+                        <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">Important Info</h4>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+                            <li>• Send only <span id="coin-name" class="text-main">BTC</span> to this address.</li>
+                            <li>• Ensure the network is <span id="network-name" class="text-main">Bitcoin</span>.</li>
+                            <li>• Deposits are credited after 3 network confirmations.</li>
+                        </ul>
+=======
                 <a href="/dashboard.html" class="nav-link">Dashboard</a>
                 <a href="/trading.html" class="nav-link">Trade</a>
                 <a href="/settings.html" class="nav-link">Settings</a>
@@ -159,12 +246,86 @@
                         </div>
                         <p class="text-muted" style="font-size: 12px; text-align: center;">Send only the selected cryptocurrency to this address. Sending any other asset may result in permanent loss.</p>
                         <button onclick="closeModal()" class="btn btn-primary" style="width: 100%;">I have sent the payment</button>
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+<<<<<<< HEAD
+    <script src="/js/translations.js"></script>
+    <script>
+        const networks = {
+            'BTC': ['BTC', 'BEP20'],
+            'ETH': ['ERC20', 'BEP20'],
+            'USDT': ['TRC20', 'ERC20', 'BEP20']
+        };
+
+        const coinSelect = document.getElementById('coin-select');
+        const networkSelect = document.getElementById('network-select');
+        const depositAddress = document.getElementById('deposit-address');
+        const qrImg = document.getElementById('qr-img');
+        const coinName = document.getElementById('coin-name');
+        const networkName = document.getElementById('network-name');
+
+        let siteSettings = {};
+
+        async function loadSettings() {
+            const res = await fetch('/api/site-settings');
+            siteSettings = await res.json();
+            updateAddress();
+        }
+
+        function updateAddress() {
+            const coin = coinSelect.value;
+            const network = networkSelect.value;
+            let addr = '';
+
+            if (coin === 'BTC') addr = siteSettings.btc_address;
+            if (coin === 'ETH') addr = siteSettings.eth_address;
+            if (coin === 'USDT') addr = siteSettings.usdt_address;
+
+            depositAddress.textContent = addr || 'Address not set';
+            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${addr}`;
+            coinName.textContent = coin;
+            networkName.textContent = network;
+        }
+
+        coinSelect.onchange = () => {
+            networkSelect.innerHTML = networks[coinSelect.value].map(n => `<option value="${n}">${n}</option>`).join('');
+            updateAddress();
+        };
+
+        networkSelect.onchange = updateAddress;
+
+        function copyAddress() {
+            navigator.clipboard.writeText(depositAddress.textContent);
+            alert('Address copied to clipboard!');
+        }
+
+        document.getElementById('confirm-deposit').onclick = async () => {
+            const amount = document.getElementById('amount').value;
+            if (!amount) return alert('Please enter amount');
+
+            const res = await fetch('/api/deposit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    coin: coinSelect.value,
+                    network: networkSelect.value,
+                    amount: parseFloat(amount),
+                    address: depositAddress.textContent
+                })
+            });
+
+            if (res.ok) {
+                alert('Deposit request submitted! It will be credited after confirmation.');
+                window.location.href = '/dashboard.html';
+            }
+        };
+
+=======
     <style>
         .tab {
             padding: 16px 24px;
@@ -224,6 +385,7 @@
             alert('Address copied!');
         }
 
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
         async function loadUser() {
             const res = await fetch('/api/user');
             if (!res.ok) return window.location.href = '/login.html';
@@ -236,6 +398,10 @@
             window.location.href = '/login.html';
         };
 
+<<<<<<< HEAD
+        coinSelect.onchange();
+        loadSettings();
+=======
         loadUser();
     </script>
 
@@ -316,6 +482,7 @@
             window.location.href = '/login.html';
         };
 
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
         loadUser();
     </script>
 </body>

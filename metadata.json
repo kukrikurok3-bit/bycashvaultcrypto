@@ -1,5 +1,10 @@
 {
+<<<<<<< HEAD
+  "name": "ByCash Vault",
+  "description": "Leading cryptocurrency exchange platform with advanced trading features and secure storage.",
+=======
   "name": "ByCash Vault Pro",
   "description": "Professional crypto exchange platform with advanced trading, secure wallet, and admin management.",
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
   "requestFramePermissions": []
 }

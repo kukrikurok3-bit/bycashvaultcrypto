@@ -8,6 +8,72 @@
 </head>
 <body>
     <nav class="navbar">
+<<<<<<< HEAD
+        <div class="flex items-center gap-8">
+            <a href="/" class="nav-logo">
+                <div class="logo-icon">B</div>
+                Admin Panel
+            </a>
+        </div>
+        <button id="logout-btn" class="btn btn-ghost">Logout</button>
+    </nav>
+
+    <main class="container" style="padding: 40px 0;">
+        <div class="animate-fade-in">
+            <h2 style="margin-bottom: 32px;">Admin Dashboard</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 40px;">
+                <div class="card">
+                    <h3 style="margin-bottom: 24px;">Site Settings</h3>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-muted" style="font-size: 12px;">BTC Deposit Address</label>
+                            <input type="text" id="set-btc" class="input-field">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-muted" style="font-size: 12px;">ETH Deposit Address</label>
+                            <input type="text" id="set-eth" class="input-field">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-muted" style="font-size: 12px;">USDT Deposit Address</label>
+                            <input type="text" id="set-usdt" class="input-field">
+                        </div>
+                        <button id="save-settings" class="btn btn-primary">Save Settings</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="margin-bottom: 24px;">Quick Actions</h3>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-muted" style="font-size: 12px;">User ID</label>
+                            <input type="number" id="update-user-id" class="input-field" placeholder="1">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-muted" style="font-size: 12px;">New Balance (USDT)</label>
+                            <input type="number" id="update-balance" class="input-field" placeholder="1000.00">
+                        </div>
+                        <button id="btn-update-balance" class="btn btn-primary">Update Balance</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 24px;">Pending Transactions</h3>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                        <thead>
+                            <tr style="text-align: left; border-bottom: 1px solid var(--border); color: var(--text-muted);">
+                                <th style="padding: 12px;">ID</th>
+                                <th style="padding: 12px;">User</th>
+                                <th style="padding: 12px;">Type</th>
+                                <th style="padding: 12px;">Amount</th>
+                                <th style="padding: 12px;">Status</th>
+                                <th style="padding: 12px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transaction-list">
+=======
         <div class="flex items-center gap-4">
             <div class="logo-icon">A</div>
             <h1 style="font-size: 18px; font-weight: 700;">Admin Control Center</h1>
@@ -80,6 +146,7 @@
                             </tr>
                         </thead>
                         <tbody id="transactions-list">
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
                             <!-- Transactions injected here -->
                         </tbody>
                     </table>
@@ -89,6 +156,27 @@
     </main>
 
     <script>
+<<<<<<< HEAD
+        async function loadAdminData() {
+            const settingsRes = await fetch('/api/site-settings');
+            const settings = await settingsRes.json();
+            document.getElementById('set-btc').value = settings.btc_address || '';
+            document.getElementById('set-eth').value = settings.eth_address || '';
+            document.getElementById('set-usdt').value = settings.usdt_address || '';
+
+            const transRes = await fetch('/api/admin/transactions');
+            const transactions = await transRes.json();
+            const list = document.getElementById('transaction-list');
+            list.innerHTML = transactions.map(t => `
+                <tr style="border-bottom: 1px solid var(--border);">
+                    <td style="padding: 12px;">${t.id}</td>
+                    <td style="padding: 12px;">${t.email}</td>
+                    <td style="padding: 12px; text-transform: capitalize;">${t.type}</td>
+                    <td style="padding: 12px;">${t.amount} ${t.coin}</td>
+                    <td style="padding: 12px; text-transform: capitalize;">${t.status}</td>
+                    <td style="padding: 12px;">
+                        ${t.status === 'pending' ? `<button class="btn btn-primary" style="padding: 4px 12px; font-size: 12px;" onclick="approve(${t.id})">Approve</button>` : ''}
+=======
         async function loadData() {
             const usersRes = await fetch('/api/admin/users');
             const txRes = await fetch('/api/admin/transactions');
@@ -141,11 +229,46 @@
                             <button onclick="handleTx(${t.id}, 'approved')" style="background: none; border: none; color: var(--success); cursor: pointer; font-size: 12px; margin-right: 8px;">Approve</button>
                             <button onclick="handleTx(${t.id}, 'rejected')" style="background: none; border: none; color: var(--danger); cursor: pointer; font-size: 12px;">Reject</button>
                         ` : '-'}
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
                     </td>
                 </tr>
             `).join('');
         }
 
+<<<<<<< HEAD
+        document.getElementById('save-settings').onclick = async () => {
+            const settings = {
+                btc_address: document.getElementById('set-btc').value,
+                eth_address: document.getElementById('set-eth').value,
+                usdt_address: document.getElementById('set-usdt').value
+            };
+            await fetch('/api/admin/update-settings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(settings)
+            });
+            alert('Settings saved');
+        };
+
+        document.getElementById('btn-update-balance').onclick = async () => {
+            const userId = document.getElementById('update-user-id').value;
+            const balance = document.getElementById('update-balance').value;
+            await fetch('/api/admin/update-balance', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId, balance })
+            });
+            alert('Balance updated');
+        };
+
+        async function approve(id) {
+            await fetch('/api/admin/approve-transaction', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id })
+            });
+            loadAdminData();
+=======
         async function updateBalance(userId) {
             const amount = prompt('Enter amount to add (negative for subtract):');
             if (amount === null) return;
@@ -184,6 +307,7 @@
                 body: JSON.stringify({ userId, status: 'verified' })
             });
             loadData();
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
         }
 
         document.getElementById('logout-btn').onclick = async () => {
@@ -191,8 +315,12 @@
             window.location.href = '/login.html';
         };
 
+<<<<<<< HEAD
+        loadAdminData();
+=======
         loadData();
         setInterval(loadData, 10000);
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
     </script>
 </body>
 </html>
