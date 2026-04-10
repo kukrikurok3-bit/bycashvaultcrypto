@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trade | ByCash Vault</title>
     <link rel="stylesheet" href="/css/style.css">
+<<<<<<< HEAD
+=======
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
 </head>
 <body style="overflow: hidden;">
     <nav class="navbar">
@@ -14,6 +18,7 @@
                 ByCash Vault
             </a>
             <div class="nav-links">
+<<<<<<< HEAD
                 <a href="/dashboard.html" class="nav-link" data-i18n="dashboard">Dashboard</a>
                 <a href="/trading.html" class="nav-link active" data-i18n="trade">Trade</a>
                 <a href="/settings.html" class="nav-link" data-i18n="settings">Settings</a>
@@ -36,11 +41,31 @@
                     <div id="theme-circle" style="width: 14px; height: 14px; background: var(--accent); border-radius: 50%; position: absolute; right: 2px; top: 2px; transition: all 0.2s;"></div>
                 </div>
                 <button id="logout-btn" class="btn btn-ghost" data-i18n="logout">Logout</button>
+=======
+                <a href="/dashboard.html" class="nav-link">Dashboard</a>
+                <a href="/trading.html" class="nav-link active">Trade</a>
+                <a href="/settings.html" class="nav-link">Settings</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-6">
+            <div id="auth-guest" class="flex items-center gap-4">
+                <a href="/login.html" class="nav-link">Sign In</a>
+                <a href="/register.html" class="btn btn-primary">Create Account</a>
+            </div>
+            <div id="auth-user" class="hidden flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-muted" style="font-size: 12px;">Balance:</span>
+                    <span id="nav-balance" style="font-weight: 700; color: var(--success);">0.00 USDT</span>
+                </div>
+                <a href="/settings.html" class="nav-link">Settings</a>
+                <button id="logout-btn" class="btn btn-ghost">Logout</button>
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
             </div>
         </div>
     </nav>
 
     <div class="trading-container">
+<<<<<<< HEAD
         <!-- Market List -->
         <aside class="trading-sidebar">
             <div class="trading-panel-header">Markets</div>
@@ -143,11 +168,218 @@
             { symbol: 'XRP/USDT', price: '0.6124', change: '-1.15%', icon: 'https://cryptologos.cc/logos/xrp-xrp-logo.png' },
             { symbol: 'ADA/USDT', price: '0.5844', change: '+0.45%', icon: 'https://cryptologos.cc/logos/cardano-ada-logo.png' },
             { symbol: 'DOGE/USDT', price: '0.1844', change: '+5.12%', icon: 'https://cryptologos.cc/logos/dogecoin-doge-logo.png' }
+=======
+        <!-- Sidebar: Order Book -->
+        <div class="trading-sidebar">
+            <div class="trading-panel-header flex justify-between">
+                <span>Price(USDT)</span>
+                <span>Amount(BTC)</span>
+                <span>Total</span>
+            </div>
+            <div id="order-book-asks" style="flex: 1; overflow: hidden; display: flex; flex-direction: column-reverse;">
+                <!-- Asks injected here -->
+            </div>
+            <div id="current-price" style="padding: 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center;">
+                <div style="font-size: 24px; font-weight: 700; color: var(--danger);">72 179.00 ↓</div>
+                <div class="text-muted" style="font-size: 12px;">≈ $72,179.00</div>
+            </div>
+            <div id="order-book-bids" style="flex: 1; overflow: hidden;">
+                <!-- Bids injected here -->
+            </div>
+        </div>
+
+        <!-- Main: Chart & Trading Panels -->
+        <div class="trading-main">
+            <!-- Asset Info Bar -->
+            <div style="padding: 12px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 32px;">
+                <div class="flex items-center gap-3">
+                    <div style="width: 32px; height: 32px; background: #f7931a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px;">B</div>
+                    <div>
+                        <div style="font-weight: 700; font-size: 18px;">BTC/USDT</div>
+                        <div class="text-muted" style="font-size: 11px;">Bitcoin Price</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-success" style="font-weight: 700; font-size: 18px;">72 179.00</div>
+                    <div class="text-muted" style="font-size: 11px;">≈ $72,179.00</div>
+                </div>
+                <div>
+                    <div class="text-muted" style="font-size: 11px;">24h change</div>
+                    <div class="text-success" style="font-size: 13px; font-weight: 600;">+1.36%</div>
+                </div>
+                <div>
+                    <div class="text-muted" style="font-size: 11px;">24h low</div>
+                    <div style="font-size: 13px; font-weight: 600;">70 522.77</div>
+                </div>
+                <div>
+                    <div class="text-muted" style="font-size: 11px;">24h high</div>
+                    <div style="font-size: 13px; font-weight: 600;">73 145.00</div>
+                </div>
+                <div>
+                    <div class="text-muted" style="font-size: 11px;">24h volume(BTC)</div>
+                    <div style="font-size: 13px; font-weight: 600;">1.30B</div>
+                </div>
+            </div>
+
+            <!-- Chart -->
+            <div id="tradingview_widget" style="flex: 1;"></div>
+
+            <!-- Trading Panel (Bottom) -->
+            <div style="height: 300px; border-top: 1px solid var(--border); display: flex; flex-direction: column;">
+                <div class="flex" style="border-bottom: 1px solid var(--border);">
+                    <div style="padding: 12px 24px; color: var(--text-main); font-weight: 700; border-bottom: 2px solid var(--accent);">Spot</div>
+                </div>
+                <div class="flex gap-8" style="padding: 24px; flex: 1;">
+                    <!-- Buy BTC -->
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+                        <div class="flex justify-between text-muted" style="font-size: 12px;">
+                            <div class="flex gap-4">
+                                <span class="text-accent" style="border-bottom: 2px solid var(--accent);">Limit</span>
+                                <span>Market</span>
+                            </div>
+                            <span>Avbl 0 USDT <svg viewBox="0 0 24 24" width="12" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
+                        </div>
+                        <div style="position: relative;">
+                            <input type="text" class="input-field" value="72150.52" style="padding-right: 60px; text-align: right; font-weight: 700;">
+                            <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">Price</span>
+                            <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">USDT</span>
+                        </div>
+                        <div style="position: relative;">
+                            <input type="text" class="input-field" placeholder="0" style="padding-right: 60px; text-align: right; font-weight: 700;">
+                            <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">Amount</span>
+                            <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">BTC</span>
+                        </div>
+                        <div style="position: relative;">
+                            <input type="text" class="input-field" placeholder="0" style="padding-right: 60px; text-align: right; font-weight: 700;">
+                            <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">Total</span>
+                            <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">USDT</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%; padding: 14px; background: var(--success); font-weight: 700;">
+                            <a href="/login.html" style="color: inherit; text-decoration: none;">Log In</a> or <a href="/register.html" style="color: inherit; text-decoration: none;">Sign Up</a>
+                        </button>
+                    </div>
+                    <!-- Sell BTC -->
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+                        <div class="flex justify-between text-muted" style="font-size: 12px;">
+                            <div class="flex gap-4">
+                                <span class="text-accent" style="border-bottom: 2px solid var(--accent);">Limit</span>
+                                <span>Market</span>
+                            </div>
+                            <span>Avbl 0 BTC <svg viewBox="0 0 24 24" width="12" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></span>
+                        </div>
+                        <div style="position: relative;">
+                            <input type="text" class="input-field" value="72150.52" style="padding-right: 60px; text-align: right; font-weight: 700;">
+                            <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">Price</span>
+                            <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">USDT</span>
+                        </div>
+                        <div style="position: relative;">
+                            <input type="text" class="input-field" placeholder="0" style="padding-right: 60px; text-align: right; font-weight: 700;">
+                            <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">Amount</span>
+                            <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">BTC</span>
+                        </div>
+                        <div style="position: relative;">
+                            <input type="text" class="input-field" placeholder="0" style="padding-right: 60px; text-align: right; font-weight: 700;">
+                            <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">Total</span>
+                            <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px;">USDT</span>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%; padding: 14px; background: var(--danger); font-weight: 700;">
+                            <a href="/login.html" style="color: inherit; text-decoration: none;">Log In</a> or <a href="/register.html" style="color: inherit; text-decoration: none;">Sign Up</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Market List & History -->
+        <div class="trading-right">
+            <div style="padding: 16px; border-bottom: 1px solid var(--border);">
+                <div style="position: relative;">
+                    <input type="text" class="input-field" placeholder="Search Crypto" style="padding-left: 36px; font-size: 13px;">
+                    <svg style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; color: var(--text-muted);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </div>
+            </div>
+            <div class="flex" style="border-bottom: 1px solid var(--border);">
+                <div style="flex: 1; padding: 12px; text-align: center; font-size: 11px; font-weight: 700; color: var(--text-muted);">ALL</div>
+                <div style="flex: 1; padding: 12px; text-align: center; font-size: 11px; font-weight: 700; color: var(--accent); border-bottom: 2px solid var(--accent);">USDT</div>
+                <div style="flex: 1; padding: 12px; text-align: center; font-size: 11px; font-weight: 700; color: var(--text-muted);">BUSD</div>
+                <div style="flex: 1; padding: 12px; text-align: center; font-size: 11px; font-weight: 700; color: var(--text-muted);">FIAT</div>
+            </div>
+            <div id="market-list" style="flex: 1; overflow-y: auto;">
+                <!-- Market items injected here -->
+            </div>
+            <div class="trading-panel-header">Market Trades</div>
+            <div id="market-trades" style="height: 200px; overflow-y: auto;">
+                <!-- Trades injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // TradingView Widget
+        new TradingView.widget({
+            "autosize": true,
+            "symbol": "BINANCE:BTCUSDT",
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "dark",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "hide_top_toolbar": false,
+            "save_image": false,
+            "container_id": "tradingview_widget"
+        });
+
+        // Mock Data Generation
+        function generateOrderBook() {
+            const asks = document.getElementById('order-book-asks');
+            const bids = document.getElementById('order-book-bids');
+            
+            for(let i=0; i<15; i++) {
+                const askPrice = (72190 + Math.random() * 30).toFixed(2);
+                const bidPrice = (72170 - Math.random() * 30).toFixed(2);
+                const amount = (Math.random() * 0.5).toFixed(5);
+                
+                asks.innerHTML += `
+                    <div class="flex justify-between" style="padding: 2px 16px; font-size: 12px; position: relative;">
+                        <div style="position: absolute; right: 0; top: 0; bottom: 0; background: rgba(246, 70, 93, 0.1); width: ${Math.random() * 100}%;"></div>
+                        <span class="text-danger">${askPrice}</span>
+                        <span>${amount}</span>
+                        <span>${(askPrice * amount).toFixed(6)}</span>
+                    </div>
+                `;
+                
+                bids.innerHTML += `
+                    <div class="flex justify-between" style="padding: 2px 16px; font-size: 12px; position: relative;">
+                        <div style="position: absolute; right: 0; top: 0; bottom: 0; background: rgba(14, 203, 129, 0.1); width: ${Math.random() * 100}%;"></div>
+                        <span class="text-success">${bidPrice}</span>
+                        <span>${amount}</span>
+                        <span>${(bidPrice * amount).toFixed(6)}</span>
+                    </div>
+                `;
+            }
+        }
+
+        const pairs = [
+            { symbol: 'USDC/USDT', price: '0.9998', change: '-0.01%' },
+            { symbol: 'BTC/USDT', price: '71744.97', change: '+1.36%' },
+            { symbol: 'ETH/USDT', price: '2191.92', change: '+1.48%' },
+            { symbol: 'TAO/USDT', price: '270.1', change: '-18.57%' },
+            { symbol: 'SOL/USDT', price: '83.25', change: '+1.63%' },
+            { symbol: 'ZEC/USDT', price: '377.72', change: '+20.77%' },
+            { symbol: 'XRP/USDT', price: '1.3376', change: '+0.56%' },
+            { symbol: 'BNB/USDT', price: '600.71', change: '-0.04%' },
+            { symbol: 'DOGE/USDT', price: '0.09223', change: '+0.76%' },
+            { symbol: 'PEPE/USDT', price: '0.00000350', change: '+1.16%' },
+            { symbol: 'DASH/USDT', price: '42.16', change: '+31.64%' }
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
         ];
 
         function loadMarketList() {
             const list = document.getElementById('market-list');
             list.innerHTML = pairs.map(p => `
+<<<<<<< HEAD
                 <div class="flex items-center justify-between p-4 cursor-pointer hover:bg-secondary transition-all" onclick="selectPair('${p.symbol}', '${p.icon}')">
                     <div class="flex items-center gap-3">
                         <img src="${p.icon}" width="20" alt="${p.symbol}" referrerPolicy="no-referrer">
@@ -155,12 +387,22 @@
                     </div>
                     <div style="text-align: right;">
                         <div style="font-size: 13px; font-weight: 600;">${p.price}</div>
+=======
+                <div class="flex justify-between items-center" style="padding: 10px 16px; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.02);">
+                    <div class="flex items-center gap-2">
+                        <svg viewBox="0 0 24 24" width="12" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <span style="font-size: 13px; font-weight: 600;">${p.symbol}</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 13px; font-weight: 700;">${p.price}</div>
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
                         <div class="${p.change.startsWith('+') ? 'text-success' : 'text-danger'}" style="font-size: 11px;">${p.change}</div>
                     </div>
                 </div>
             `).join('');
         }
 
+<<<<<<< HEAD
         function selectPair(symbol, icon) {
             document.getElementById('current-pair').textContent = symbol;
             document.getElementById('asset-icon').src = icon;
@@ -185,11 +427,37 @@
                 const user = await res.json();
                 document.getElementById('nav-balance').textContent = `${user.balance.toFixed(2)} USDT`;
                 document.getElementById('available-usdt').textContent = `${user.balance.toFixed(2)} USDT`;
+=======
+        function loadMarketTrades() {
+            const list = document.getElementById('market-trades');
+            for(let i=0; i<20; i++) {
+                const price = (72170 + Math.random() * 10).toFixed(2);
+                const amount = (Math.random() * 0.1).toFixed(5);
+                const time = new Date().toLocaleTimeString('en-GB', { hour12: false });
+                list.innerHTML += `
+                    <div class="flex justify-between" style="padding: 4px 16px; font-size: 12px;">
+                        <span class="${Math.random() > 0.5 ? 'text-success' : 'text-danger'}">${price}</span>
+                        <span>${amount}</span>
+                        <span class="text-muted">${time}</span>
+                    </div>
+                `;
+            }
+        }
+
+        async function checkAuth() {
+            const res = await fetch('/api/user');
+            if (res.ok) {
+                const user = await res.json();
+                document.getElementById('auth-guest').classList.add('hidden');
+                document.getElementById('auth-user').classList.remove('hidden');
+                document.getElementById('nav-balance').textContent = `${user.balance.toFixed(2)} USDT`;
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
             }
         }
 
         document.getElementById('logout-btn').onclick = async () => {
             await fetch('/api/logout', { method: 'POST' });
+<<<<<<< HEAD
             window.location.href = '/login.html';
         };
 
@@ -198,6 +466,15 @@
             selectPair('BTC/USDT', 'https://cryptologos.cc/logos/bitcoin-btc-logo.png');
             loadUser();
         });
+=======
+            window.location.reload();
+        };
+
+        checkAuth();
+        generateOrderBook();
+        loadMarketList();
+        loadMarketTrades();
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
     </script>
 </body>
 </html>

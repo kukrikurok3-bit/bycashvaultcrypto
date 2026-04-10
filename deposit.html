@@ -14,6 +14,7 @@
                 ByCash Vault
             </a>
             <div class="nav-links">
+<<<<<<< HEAD
                 <a href="/dashboard.html" class="nav-link" data-i18n="dashboard">Dashboard</a>
                 <a href="/trading.html" class="nav-link" data-i18n="trade">Trade</a>
                 <a href="/settings.html" class="nav-link" data-i18n="settings">Settings</a>
@@ -99,12 +100,160 @@
                             <li>• Ensure the network is <span id="network-name" class="text-main">Bitcoin</span>.</li>
                             <li>• Deposits are credited after 3 network confirmations.</li>
                         </ul>
+=======
+                <a href="/dashboard.html" class="nav-link">Dashboard</a>
+                <a href="/trading.html" class="nav-link">Trade</a>
+                <a href="/settings.html" class="nav-link">Settings</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-2">
+                <span class="text-muted" style="font-size: 12px;">Balance:</span>
+                <span id="nav-balance" style="font-weight: 700; color: var(--success);">0.00 USDT</span>
+            </div>
+            <button id="logout-btn" class="btn btn-ghost">Logout</button>
+        </div>
+    </nav>
+
+    <div style="background: #1e2329; padding: 0 40px; border-bottom: 1px solid var(--border);">
+        <div class="flex gap-1">
+            <a href="/deposit.html" class="tab active">DEPOSIT</a>
+            <a href="/withdraw.html" class="tab">WITHDRAWAL</a>
+            <a href="/history.html" class="tab">HISTORY</a>
+            <a href="/cashback.html" class="tab">CASHBACK</a>
+            <a href="/promo.html" class="tab">PROMO CODES</a>
+            <a href="/safe.html" class="tab">MY SAFE</a>
+        </div>
+    </div>
+
+    <main class="container" style="padding: 40px 0;">
+        <div class="animate-fade-in">
+            <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 32px;">Account top-up</h2>
+            
+            <!-- Steps -->
+            <div class="flex justify-between items-center" style="margin-bottom: 40px; padding: 0 40px;">
+                <div class="step active">
+                    <div class="step-num">1</div>
+                    <div class="step-text">Deposit<br>method</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-text">Payment<br>details</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-text">Payment<br>process</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-text">Payment<br>confirmation</div>
+                </div>
+            </div>
+
+            <!-- Search & Grid Controls -->
+            <div class="flex gap-4 items-center" style="margin-bottom: 32px;">
+                <div style="flex: 1; position: relative;">
+                    <input type="text" class="input-field" placeholder="Search" style="padding-left: 40px; background: #181a20;">
+                    <svg style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 16px; color: var(--text-muted);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </div>
+                <div class="flex gap-2">
+                    <div class="grid-btn active"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+                    <div class="grid-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color: #f0b90b;"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                Popular
+            </h3>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+                <!-- USDT TRC-20 -->
+                <div class="method-card" onclick="selectMethod('USDT_TRC20')">
+                    <div class="flex items-center gap-4" style="margin-bottom: 16px;">
+                        <div class="method-icon" style="background: #26a17b;">T</div>
+                        <div style="font-weight: 700; font-size: 14px;">Tether (USDT) TRC-20</div>
+                    </div>
+                    <div class="flex justify-between text-muted" style="font-size: 11px; border-top: 1px solid var(--border); padding-top: 12px;">
+                        <span>Min $10</span>
+                        <span>~10 min.</span>
+                    </div>
+                </div>
+                <!-- USDT BEP20 -->
+                <div class="method-card" onclick="selectMethod('USDT_BEP20')">
+                    <div class="flex items-center gap-4" style="margin-bottom: 16px;">
+                        <div class="method-icon" style="background: #f3ba2f;">T</div>
+                        <div style="font-weight: 700; font-size: 14px;">Tether (USDT) BEP20</div>
+                    </div>
+                    <div class="flex justify-between text-muted" style="font-size: 11px; border-top: 1px solid var(--border); padding-top: 12px;">
+                        <span>Min $20</span>
+                        <span>3-5 min.</span>
+                    </div>
+                </div>
+                <!-- USDT ERC20 -->
+                <div class="method-card" onclick="selectMethod('USDT_ERC20')">
+                    <div class="flex items-center gap-4" style="margin-bottom: 16px;">
+                        <div class="method-icon" style="background: #627eea;">T</div>
+                        <div style="font-weight: 700; font-size: 14px;">Tether (USDT)</div>
+                    </div>
+                    <div class="flex justify-between text-muted" style="font-size: 11px; border-top: 1px solid var(--border); padding-top: 12px;">
+                        <span>Min $10</span>
+                        <span>~10 min.</span>
+                    </div>
+                </div>
+                <!-- BTC -->
+                <div class="method-card" onclick="selectMethod('BTC')">
+                    <div class="flex items-center gap-4" style="margin-bottom: 16px;">
+                        <div class="method-icon" style="background: #f7931a;">B</div>
+                        <div style="font-weight: 700; font-size: 14px;">Bitcoin (BTC)</div>
+                    </div>
+                    <div class="flex justify-between text-muted" style="font-size: 11px; border-top: 1px solid var(--border); padding-top: 12px;">
+                        <span>Min $50</span>
+                        <span>~30 min.</span>
+                    </div>
+                </div>
+                <!-- ETH -->
+                <div class="method-card" onclick="selectMethod('ETH')">
+                    <div class="flex items-center gap-4" style="margin-bottom: 16px;">
+                        <div class="method-icon" style="background: #627eea;">E</div>
+                        <div style="font-weight: 700; font-size: 14px;">Ethereum (ETH)</div>
+                    </div>
+                    <div class="flex justify-between text-muted" style="font-size: 11px; border-top: 1px solid var(--border); padding-top: 12px;">
+                        <span>Min $30</span>
+                        <span>~15 min.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal for details -->
+            <div id="deposit-modal" class="hidden" style="position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 2000;">
+                <div class="card" style="width: 100%; max-width: 480px; padding: 32px; position: relative;">
+                    <button onclick="closeModal()" style="position: absolute; right: 20px; top: 20px; background: none; border: none; color: var(--text-muted); cursor: pointer;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+                    <h4 id="modal-title" style="font-size: 20px; font-weight: 700; margin-bottom: 24px;">Deposit USDT TRC-20</h4>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 24px;">
+                        <div style="width: 180px; height: 180px; background: white; padding: 10px; border-radius: 12px;">
+                            <img id="qr-code" src="" alt="QR" style="width: 100%;">
+                        </div>
+                        <div style="width: 100%;">
+                            <label class="text-muted" style="font-size: 12px; font-weight: 600; margin-bottom: 8px; display: block;">Deposit Address</label>
+                            <div style="padding: 12px; background: var(--bg-main); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                                <code id="deposit-address" style="font-size: 12px; color: var(--accent); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></code>
+                                <button onclick="copyAddress()" style="background: none; border: none; color: var(--text-muted); cursor: pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+                            </div>
+                        </div>
+                        <p class="text-muted" style="font-size: 12px; text-align: center;">Send only the selected cryptocurrency to this address. Sending any other asset may result in permanent loss.</p>
+                        <button onclick="closeModal()" class="btn btn-primary" style="width: 100%;">I have sent the payment</button>
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+<<<<<<< HEAD
     <script src="/js/translations.js"></script>
     <script>
         const networks = {
@@ -176,6 +325,67 @@
             }
         };
 
+=======
+    <style>
+        .tab {
+            padding: 16px 24px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+        .tab:hover { color: var(--text-main); }
+        .tab.active { color: var(--text-main); border-bottom-color: var(--accent); background: rgba(123, 63, 228, 0.05); }
+
+        .step { display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.4; }
+        .step.active { opacity: 1; }
+        .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--bg-secondary); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+        .step.active .step-num { background: var(--accent); border-color: var(--accent); color: white; }
+        .step-text { text-align: center; font-size: 12px; font-weight: 600; line-height: 1.2; }
+        .step-line { flex: 1; height: 1px; background: var(--border); margin: 0 16px; margin-bottom: 24px; }
+
+        .grid-btn { width: 36px; height: 36px; background: #181a20; border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); cursor: pointer; }
+        .grid-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+        .method-card { background: #181a20; border: 1px solid var(--border); border-radius: 12px; padding: 24px; cursor: pointer; transition: var(--transition); }
+        .method-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .method-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; font-size: 14px; }
+    </style>
+
+    <script>
+        const addresses = {
+            'USDT_TRC20': 'TR7NHqJ729C8XhtZY4TOO693oJ8sr8xy5c',
+            'USDT_BEP20': '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
+            'USDT_ERC20': '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
+            'BTC': '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa',
+            'ETH': '0x742d35Cc6634C0532925a3b844Bc454e4438f44e'
+        };
+
+        function selectMethod(method) {
+            const modal = document.getElementById('deposit-modal');
+            const title = document.getElementById('modal-title');
+            const addr = document.getElementById('deposit-address');
+            const qr = document.getElementById('qr-code');
+
+            title.textContent = `Deposit ${method.replace('_', ' ')}`;
+            addr.textContent = addresses[method];
+            qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${addresses[method]}`;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('deposit-modal').classList.add('hidden');
+        }
+
+        function copyAddress() {
+            navigator.clipboard.writeText(document.getElementById('deposit-address').textContent);
+            alert('Address copied!');
+        }
+
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
         async function loadUser() {
             const res = await fetch('/api/user');
             if (!res.ok) return window.location.href = '/login.html';
@@ -188,8 +398,91 @@
             window.location.href = '/login.html';
         };
 
+<<<<<<< HEAD
         coinSelect.onchange();
         loadSettings();
+=======
+        loadUser();
+    </script>
+
+    <style>
+        .coin-select {
+            padding: 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .coin-select:hover {
+            border-color: var(--text-muted);
+        }
+        .coin-select.active {
+            border-color: var(--accent);
+            background: rgba(123, 63, 228, 0.05);
+        }
+    </style>
+
+    <script>
+        const addresses = {
+            'BTC': { 'BTC': '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa', 'BEP20': '0x742d35Cc6634C0532925a3b844Bc454e4438f44e' },
+            'ETH': { 'ERC20': '0x742d35Cc6634C0532925a3b844Bc454e4438f44e', 'BEP20': '0x742d35Cc6634C0532925a3b844Bc454e4438f44e' },
+            'USDT': { 'TRC20': 'TR7NHqJ729C8XhtZY4TOO693oJ8sr8xy5c', 'ERC20': '0x742d35Cc6634C0532925a3b844Bc454e4438f44e' }
+        };
+
+        const networks = {
+            'BTC': ['BTC', 'BEP20'],
+            'ETH': ['ERC20', 'BEP20'],
+            'USDT': ['TRC20', 'ERC20', 'BEP20']
+        };
+
+        let currentCoin = 'BTC';
+
+        document.querySelectorAll('.coin-select').forEach(el => {
+            el.onclick = () => {
+                document.querySelectorAll('.coin-select').forEach(x => x.classList.remove('active'));
+                el.classList.add('active');
+                currentCoin = el.dataset.coin;
+                updateNetworks();
+            };
+        });
+
+        function updateNetworks() {
+            const select = document.getElementById('network-select');
+            select.innerHTML = networks[currentCoin].map(n => `<option value="${n}">${n}</option>`).join('');
+            updateAddress();
+        }
+
+        function updateAddress() {
+            const network = document.getElementById('network-select').value;
+            const address = addresses[currentCoin][network];
+            document.getElementById('deposit-address').textContent = address;
+            document.getElementById('qr-code').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${address}`;
+        }
+
+        document.getElementById('network-select').onchange = updateAddress;
+
+        document.getElementById('copy-btn').onclick = () => {
+            navigator.clipboard.writeText(document.getElementById('deposit-address').textContent);
+            alert('Address copied!');
+        };
+
+        async function loadUser() {
+            const res = await fetch('/api/user');
+            if (!res.ok) return window.location.href = '/login.html';
+            const user = await res.json();
+            document.getElementById('user-email').textContent = user.email;
+        }
+
+        document.getElementById('logout-btn').onclick = async () => {
+            await fetch('/api/logout', { method: 'POST' });
+            window.location.href = '/login.html';
+        };
+
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
         loadUser();
     </script>
 </body>

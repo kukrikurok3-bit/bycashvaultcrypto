@@ -14,6 +14,7 @@
                 ByCash Vault
             </a>
             <div class="nav-links">
+<<<<<<< HEAD
                 <a href="/dashboard.html" class="nav-link" data-i18n="dashboard">Dashboard</a>
                 <a href="/trading.html" class="nav-link" data-i18n="trade">Trade</a>
                 <a href="/settings.html" class="nav-link active" data-i18n="settings">Settings</a>
@@ -37,6 +38,19 @@
                 </div>
                 <button id="logout-btn" class="btn btn-ghost" data-i18n="logout">Logout</button>
             </div>
+=======
+                <a href="/dashboard.html" class="nav-link">Dashboard</a>
+                <a href="/trading.html" class="nav-link">Trade</a>
+                <a href="/settings.html" class="nav-link active">Settings</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-2">
+                <span class="text-muted" style="font-size: 12px;">Balance:</span>
+                <span id="nav-balance" style="font-weight: 700; color: var(--success);">0.00 USDT</span>
+            </div>
+            <button id="logout-btn" class="btn btn-ghost">Logout</button>
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
         </div>
     </nav>
 
@@ -55,10 +69,13 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         KYC Verification
                     </div>
+<<<<<<< HEAD
                     <div class="settings-nav-item" data-tab="addresses">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         My Addresses
                     </div>
+=======
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
                     <div class="settings-nav-item" data-tab="security">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                         Security
@@ -130,6 +147,7 @@
                             <p class="text-muted" style="font-size: 14px;">Your account is fully verified. You have full access to all features.</p>
                         </div>
                     </div>
+<<<<<<< HEAD
 
                     <!-- Addresses Tab -->
                     <div id="tab-addresses" class="tab-content hidden">
@@ -152,6 +170,8 @@
                             <button id="save-addresses" class="btn btn-primary" style="width: fit-content; padding: 12px 32px;">Save Addresses</button>
                         </div>
                     </div>
+=======
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
                 </div>
             </div>
         </div>
@@ -174,7 +194,10 @@
         .settings-nav-item.active { background: var(--accent); color: white; }
     </style>
 
+<<<<<<< HEAD
     <script src="/js/translations.js"></script>
+=======
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
     <script>
         document.querySelectorAll('.settings-nav-item').forEach(item => {
             item.onclick = () => {
@@ -202,6 +225,7 @@
                 document.getElementById('kyc-unverified').classList.add('hidden');
                 document.getElementById('kyc-verified').classList.remove('hidden');
             }
+<<<<<<< HEAD
 
             // Load addresses
             const addrRes = await fetch('/api/user/addresses');
@@ -232,6 +256,10 @@
             alert('Addresses saved successfully!');
         };
 
+=======
+        }
+
+>>>>>>> c5485cc5a6783ecde47599e0ef2664828435745e
         document.getElementById('submit-kyc').onclick = async () => {
             const res = await fetch('/api/kyc/submit', { method: 'POST' });
             if (res.ok) {
