@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByCashVault | Secure Crypto Exchange</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="flex items-center gap-8">
+            <a href="/" class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 0L32 16L16 32L0 16L16 0Z" fill="#f0b90b"/>
+                </svg>
+                ByCashVault
+            </a>
+            <div class="nav-links">
+                <a href="/trading.html" class="nav-link">Market</a>
+                <a href="/trading.html" class="nav-link">Trade</a>
+                <a href="/wallet.html" class="nav-link">Wallet</a>
+                <a href="/referral.html" class="nav-link">Referral</a>
+            </div>
+        </div>
+        <div id="auth-buttons">
+            <div id="auth-links" class="flex items-center gap-4">
+                <a href="/login.html" class="nav-link">Log In</a>
+                <a href="/register.html" class="btn btn-primary">Register</a>
+            </div>
+            <div id="user-links" class="hidden flex items-center gap-4">
+                <a href="/dashboard.html" class="nav-link font-bold">Dashboard</a>
+                <button id="logout-btn" class="btn btn-outline" style="padding: 6px 12px; font-size: 12px;">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container animate-fade-in">
+                <h1>Buy, trade, and hold <br> <span class="text-accent">600+ cryptocurrencies</span></h1>
+                <p>Join the world's largest crypto exchange. Start your journey today with the most trusted platform.</p>
+                <div class="flex justify-center gap-4">
+                    <a href="/register.html" class="btn btn-primary" style="padding: 16px 48px; font-size: 18px;">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Table -->
+        <section class="container" style="padding: 80px 0;">
+            <h2 style="font-size: 32px; margin-bottom: 32px;">Popular Cryptocurrencies</h2>
+            <div class="card table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Last Price</th>
+                            <th>24h Change</th>
+                            <th style="text-align: right;">Market Cap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="flex items-center gap-4">
+                                    <span style="width: 32px; height: 32px; background: #f7931a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800;">BTC</span>
+                                    <div>
+                                        <div class="font-bold">Bitcoin</div>
+                                        <div class="text-muted" style="font-size: 12px;">BTC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>$64,231.50</td>
+                            <td class="text-success">+2.45%</td>
+                            <td style="text-align: right;">$1.2T</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="flex items-center gap-4">
+                                    <span style="width: 32px; height: 32px; background: #627eea; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800;">ETH</span>
+                                    <div>
+                                        <div class="font-bold">Ethereum</div>
+                                        <div class="text-muted" style="font-size: 12px;">ETH</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>$3,452.12</td>
+                            <td class="text-danger">-1.12%</td>
+                            <td style="text-align: right;">$412B</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        async function checkAuth() {
+            const res = await fetch('/api/user');
+            if (res.ok) {
+                document.getElementById('auth-links').classList.add('hidden');
+                document.getElementById('user-links').classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('logout-btn').onclick = async () => {
+            await fetch('/api/logout', { method: 'POST' });
+            window.location.reload();
+        };
+
+        checkAuth();
+    </script>
+</body>
+</html>

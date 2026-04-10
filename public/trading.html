@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading | ByCashVault</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body style="overflow: hidden; height: 100vh; display: flex; flex-direction: column;">
+    <nav class="navbar" style="height: 56px; padding: 0 16px;">
+        <div class="flex items-center gap-6">
+            <a href="/" class="nav-logo" style="font-size: 18px;">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 0L32 16L16 32L0 16L16 0Z" fill="#f0b90b"/>
+                </svg>
+                ByCashVault
+            </a>
+            <div class="nav-links">
+                <a href="/dashboard.html" class="nav-link">Dashboard</a>
+                <a href="/trading.html" class="nav-link active">Trade</a>
+                <a href="/wallet.html" class="nav-link">Wallet</a>
+                <a href="/settings.html" class="nav-link">Settings</a>
+            </div>
+        </div>
+        <div id="user-info">
+            <span id="user-balance" class="text-accent font-bold" style="font-size: 14px;">$0.00</span>
+        </div>
+    </nav>
+
+    <div class="flex" style="flex: 1; overflow: hidden;">
+        <!-- Sidebar: Market List -->
+        <div class="trading-sidebar">
+            <div class="flex" style="border-bottom: 1px solid var(--border);">
+                <button class="market-tab active">Spot</button>
+                <button class="market-tab">Futures</button>
+            </div>
+            <div style="padding: 12px; border-bottom: 1px solid var(--border);">
+                <input type="text" placeholder="Search" class="input-field" style="padding: 6px 12px; font-size: 12px;">
+            </div>
+            <div id="market-list" style="padding: 8px;">
+                <!-- Market items will be injected here -->
+            </div>
+        </div>
+
+        <!-- Main Trading Area -->
+        <div class="flex-col" style="flex: 1; overflow: hidden;">
+            <!-- Chart -->
+            <div style="flex: 1; background: #000; position: relative;">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                  <div id="tradingview_chart" style="height:100%;width:100%"></div>
+                  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                </div>
+            </div>
+
+            <!-- Order History -->
+            <div style="height: 200px; border-top: 1px solid var(--border); background: var(--bg-secondary); padding: 16px;">
+                <div class="flex gap-6" style="border-bottom: 1px solid var(--border); margin-bottom: 16px;">
+                    <button class="tab-btn active">Open Orders</button>
+                    <button class="tab-btn">Order History</button>
+                </div>
+                <div class="text-center text-muted" style="padding: 40px 0; font-size: 12px;">No open orders</div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Order Book & Trade Form -->
+        <div class="trading-right-panel">
+            <!-- Order Book -->
+            <div style="flex: 1; padding: 16px; overflow: hidden; display: flex; flex-direction: column;">
+                <h3 style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Order Book</h3>
+                <div style="flex: 1; overflow-y: auto;">
+                    <!-- Sells -->
+                    <div style="color: var(--danger); opacity: 0.8; font-size: 11px;">
+                        <div class="flex justify-between"><span>64,300.50</span><span>0.124</span></div>
+                        <div class="flex justify-between"><span>64,295.20</span><span>0.045</span></div>
+                        <div class="flex justify-between"><span>64,290.00</span><span>1.200</span></div>
+                    </div>
+                    <!-- Current Price -->
+                    <div style="padding: 12px 0; text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 12px 0;">
+                        <span style="font-size: 18px; font-weight: 700; color: var(--success);">64,281.50</span>
+                    </div>
+                    <!-- Buys -->
+                    <div style="color: var(--success); opacity: 0.8; font-size: 11px;">
+                        <div class="flex justify-between"><span>64,275.00</span><span>0.850</span></div>
+                        <div class="flex justify-between"><span>64,270.10</span><span>0.012</span></div>
+                        <div class="flex justify-between"><span>64,265.40</span><span>0.330</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trade Form -->
+            <div style="padding: 16px; border-top: 1px solid var(--border);">
+                <div class="flex gap-2" style="margin-bottom: 16px;">
+                    <button class="btn" style="flex: 1; background: var(--success); color: #000; font-size: 12px;">BUY</button>
+                    <button class="btn" style="flex: 1; background: var(--bg-card); color: var(--text-muted); font-size: 12px;">SELL</button>
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 10px; color: var(--text-muted);">Price</span>
+                        <input type="text" value="64281.50" class="input-field" style="text-align: right; padding-left: 48px; font-size: 12px;">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 10px; color: var(--text-muted);">Amount</span>
+                        <input type="text" placeholder="0.00" class="input-field" style="text-align: right; padding-left: 48px; font-size: 12px;">
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; padding: 12px;">Buy BTC</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const markets = [
+            { symbol: 'BTCUSDT', name: 'BTC / USDT', icon: 'https://cryptologos.cc/logos/bitcoin-btc-logo.png', price: '64,281.50', change: '+1.2%' },
+            { symbol: 'ETHUSDT', name: 'ETH / USDT', icon: 'https://cryptologos.cc/logos/ethereum-eth-logo.png', price: '3,421.20', change: '-0.5%' },
+            { symbol: 'BNBUSDT', name: 'BNB / USDT', icon: 'https://cryptologos.cc/logos/bnb-bnb-logo.png', price: '582.40', change: '+0.8%' },
+            { symbol: 'SOLUSDT', name: 'SOL / USDT', icon: 'https://cryptologos.cc/logos/solana-sol-logo.png', price: '145.20', change: '+2.4%' },
+            { symbol: 'XRPUSDT', name: 'XRP / USDT', icon: 'https://cryptologos.cc/logos/xrp-xrp-logo.png', price: '0.62', change: '-1.1%' },
+            { symbol: 'ADAUSDT', name: 'ADA / USDT', icon: 'https://cryptologos.cc/logos/cardano-ada-logo.png', price: '0.45', change: '+0.3%' },
+            { symbol: 'DOGEUSDT', name: 'DOGE / USDT', icon: 'https://cryptologos.cc/logos/dogecoin-doge-logo.png', price: '0.16', change: '+5.2%' },
+            { symbol: 'TRXUSDT', name: 'TRX / USDT', icon: 'https://cryptologos.cc/logos/tron-trx-logo.png', price: '0.12', change: '+0.1%' },
+            { symbol: 'DOTUSDT', name: 'DOT / USDT', icon: 'https://cryptologos.cc/logos/polkadot-new-dot-logo.png', price: '7.20', change: '-0.4%' },
+            { symbol: 'MATICUSDT', name: 'MATIC / USDT', icon: 'https://cryptologos.cc/logos/polygon-matic-logo.png', price: '0.72', change: '+1.5%' }
+        ];
+
+        let currentSymbol = 'BTCUSDT';
+        let widget = null;
+
+        function initWidget(symbol) {
+            widget = new TradingView.widget({
+                "autosize": true,
+                "symbol": "BINANCE:" + symbol,
+                "interval": "D",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "allow_symbol_change": true,
+                "container_id": "tradingview_chart"
+            });
+        }
+
+        function renderMarkets() {
+            const list = document.getElementById('market-list');
+            list.innerHTML = '';
+            markets.forEach(m => {
+                const div = document.createElement('div');
+                div.className = `market-item ${m.symbol === currentSymbol ? 'active' : ''}`;
+                div.innerHTML = `
+                    <div class="flex items-center gap-2">
+                        <img src="${m.icon}" style="width: 16px; height: 16px;" alt="">
+                        <span style="font-size: 12px; font-weight: 700;">${m.name}</span>
+                    </div>
+                    <span style="font-size: 10px;" class="${m.change.startsWith('+') ? 'text-success' : 'text-danger'}">${m.change}</span>
+                `;
+                div.onclick = () => {
+                    currentSymbol = m.symbol;
+                    renderMarkets();
+                    initWidget(m.symbol);
+                };
+                list.appendChild(div);
+            });
+        }
+
+        async function loadBalance() {
+            const res = await fetch('/api/user');
+            if (res.ok) {
+                const user = await res.json();
+                document.getElementById('user-balance').textContent = '$' + user.balance.toLocaleString('en-US', { minimumFractionDigits: 2 });
+            }
+        }
+
+        window.onload = () => {
+            renderMarkets();
+            initWidget(currentSymbol);
+            loadBalance();
+        };
+    </script>
+</body>
+</html>

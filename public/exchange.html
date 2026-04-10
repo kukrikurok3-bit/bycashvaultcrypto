@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange | ByCashVault</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="flex items-center gap-8">
+            <a href="/" class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 0L32 16L16 32L0 16L16 0Z" fill="#f0b90b"/>
+                </svg>
+                ByCashVault
+            </a>
+            <div class="nav-links">
+                <a href="/dashboard.html" class="nav-link">Dashboard</a>
+                <a href="/trading.html" class="nav-link">Trade</a>
+                <a href="/wallet.html" class="nav-link">Wallet</a>
+                <a href="/exchange.html" class="nav-link active">Exchange</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container animate-fade-in" style="padding: 60px 24px;">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div style="margin-bottom: 32px;">
+                <h2 style="font-size: 32px; font-weight: 700;">Instant Exchange</h2>
+                <p class="text-muted" style="margin-top: 4px;">Swap your assets instantly with zero fees.</p>
+            </div>
+
+            <div class="card" style="display: flex; flex-direction: column; gap: 8px;">
+                <!-- From Section -->
+                <div style="padding: 24px; background: var(--bg-secondary); border-radius: 12px; border: 1px solid var(--border); display: flex; flex-direction: column; gap: 16px;">
+                    <div class="flex justify-between" style="font-size: 13px;">
+                        <span class="text-muted">From</span>
+                        <span class="text-muted">Balance: <span id="from-balance">0.00</span> BTC</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <input type="number" id="from-amount" placeholder="0.00" style="flex: 1; background: transparent; border: none; color: var(--text-main); font-size: 32px; font-weight: 700; outline: none; width: 100%;">
+                        <div style="padding: 8px 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); border-radius: 8px; font-weight: 700;">BTC</div>
+                    </div>
+                </div>
+
+                <!-- Swap Button -->
+                <div style="display: flex; justify-content: center; margin: -20px 0; position: relative; z-index: 10;">
+                    <button id="swap-btn" style="width: 40px; height: 40px; background: var(--accent); color: black; border: 4px solid var(--bg-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+                    </button>
+                </div>
+
+                <!-- To Section -->
+                <div style="padding: 24px; background: var(--bg-secondary); border-radius: 12px; border: 1px solid var(--border); display: flex; flex-direction: column; gap: 16px;">
+                    <div class="flex justify-between" style="font-size: 13px;">
+                        <span class="text-muted">To (Estimated)</span>
+                        <span class="text-muted">Balance: <span id="to-balance">0.00</span> USDT</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div id="to-amount" style="flex: 1; font-size: 32px; font-weight: 700; color: var(--text-muted);">0.00</div>
+                        <div style="padding: 8px 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); border-radius: 8px; font-weight: 700;">USDT</div>
+                    </div>
+                </div>
+
+                <div style="padding: 16px 8px; display: flex; flex-direction: column; gap: 8px;">
+                    <div class="flex justify-between" style="font-size: 12px;">
+                        <span class="text-muted">Exchange Rate</span>
+                        <span style="color: var(--text-main);">1 BTC ≈ 64,281.50 USDT</span>
+                    </div>
+                </div>
+
+                <button id="confirm-exchange" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px; margin-top: 16px;">Exchange Now</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const fromInput = document.getElementById('from-amount');
+        const toOutput = document.getElementById('to-amount');
+        const rate = 64281.50;
+
+        fromInput.oninput = () => {
+            const val = parseFloat(fromInput.value) || 0;
+            toOutput.textContent = (val * rate).toLocaleString('en-US', { minimumFractionDigits: 2 });
+            if (val > 0) {
+                toOutput.style.color = 'var(--text-main)';
+            } else {
+                toOutput.style.color = 'var(--text-muted)';
+            }
+        };
+
+        document.getElementById('confirm-exchange').onclick = async () => {
+            const amount = parseFloat(fromInput.value);
+            if (!amount || amount <= 0) return alert('Please enter amount');
+            
+            alert('Exchange successful! (Demo)');
+            window.location.href = '/wallet.html';
+        };
+    </script>
+</body>
+</html>

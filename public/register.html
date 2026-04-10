@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | ByCashVault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-[#0b0e11] text-[#eaecef] flex items-center justify-center min-h-screen p-6">
+    <div class="w-full max-w-md">
+        <div class="text-center mb-8">
+            <a href="/" class="text-3xl font-bold tracking-tight inline-flex items-center gap-2 mb-4 text-[#f0b90b]">
+                <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 0L32 16L16 32L0 16L16 0Z" fill="#f0b90b"/>
+                </svg>
+                ByCashVault
+            </a>
+            <h2 class="text-2xl font-bold">Register</h2>
+        </div>
+
+        <form id="register-form" class="card space-y-6">
+            <div>
+                <label class="block text-sm font-medium text-[#848e9c] mb-2">Email</label>
+                <input type="email" id="email" required class="input-field" placeholder="Email">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-[#848e9c] mb-2">Password</label>
+                <input type="password" id="password" required class="input-field" placeholder="Password">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-[#848e9c] mb-2">Referral ID (Optional)</label>
+                <input type="text" id="referral" class="input-field" placeholder="Referral ID">
+            </div>
+
+            <!-- Bot Check Button -->
+            <div class="pt-2">
+                <button type="button" id="bot-check" class="w-full py-3 border border-[#2b3139] rounded flex items-center justify-center gap-3 hover:bg-[#1e2329] transition-colors group">
+                    <div id="check-box" class="w-5 h-5 border-2 border-[#2b3139] rounded flex items-center justify-center group-hover:border-[#f0b90b] transition-colors">
+                        <div id="check-mark" class="hidden w-2 h-2 bg-[#f0b90b] rounded-sm"></div>
+                    </div>
+                    <span class="text-sm font-medium text-[#848e9c] group-hover:text-[#eaecef] transition-colors">I am not a robot</span>
+                </button>
+            </div>
+
+            <button type="submit" id="submit-btn" disabled class="w-full btn-primary py-3 opacity-50 cursor-not-allowed">Register</button>
+            
+            <p class="text-center text-sm text-[#848e9c]">
+                Already have an account? <a href="/login.html" class="text-[#f0b90b] hover:underline">Log In</a>
+            </p>
+        </form>
+    </div>
+
+    <script>
+        const botCheck = document.getElementById('bot-check');
+        const checkMark = document.getElementById('check-mark');
+        const submitBtn = document.getElementById('submit-btn');
+        let isVerified = false;
+
+        botCheck.addEventListener('click', () => {
+            isVerified = true;
+            checkMark.classList.remove('hidden');
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        });
+
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!isVerified) return alert('Please verify you are not a robot');
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const referral = document.getElementById('referral').value;
+
+            const res = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password, referral })
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                alert('Registration successful! Please log in.');
+                window.location.href = '/login.html';
+            } else {
+                alert(data.error);
+            }
+        });
+    </script>
+</body>
+</html>
